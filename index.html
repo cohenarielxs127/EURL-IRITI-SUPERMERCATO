@@ -2,210 +2,634 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>EURL IRITI SUPERMERCATO – Invorra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invorra Market – EURL IRITI SUPERMERCATO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card: #0b1220;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border: #1e293b;
+      --radius-xl: 22px;
+      --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.7);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
     }
 
     body {
-      background: #f5f5f5;
-      color: #222;
-      padding: 30px 15px;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
     }
 
-    .card {
-      max-width: 900px;
+    .page {
+      max-width: 1200px;
       margin: 0 auto;
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-      padding: 32px 26px 26px;
+      padding: 24px 16px 48px;
     }
 
-    header h1 {
-      font-size: 28px;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    header p {
-      font-size: 15px;
-      line-height: 1.6;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    header p span.label {
-      font-weight: 600;
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: conic-gradient(from 180deg, #22c55e, #bef264, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #022c22;
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 12px 40px rgba(34, 197, 94, 0.55);
+    }
+
+    .logo-text-main {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .logo-text-sub {
       font-size: 11px;
-      letter-spacing: 0.12em;
-      color: #888;
-      display: block;
-      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
     }
 
-    .info-grid {
+    .domain-pill {
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.2);
+    }
+
+    main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 28px;
     }
 
-    .info-block {
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: #fafafa;
-      border: 1px solid #eee;
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .info-block strong {
-      font-size: 13px;
-      color: #444;
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.16), transparent 60%),
+                  var(--card);
+      border-radius: 26px;
+      padding: 26px 24px 22px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
     }
 
-    .info-block div.value {
-      margin-top: 4px;
-      font-size: 14px;
-    }
-
-    .badge {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 5px 11px;
+      padding: 4px 12px;
       border-radius: 999px;
-      background: #0f9d58;
-      color: #fff;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-top: 14px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
 
-    .badge span.dot {
+    .hero-badge span {
+      font-size: 11px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, #bbf7d0, #4ade80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 430px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 11px;
+    }
+
+    .hero-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn-main,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 10px 18px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #052e16;
+      font-weight: 600;
+      box-shadow: 0 15px 35px rgba(34, 197, 94, 0.55);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.7);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta i {
       width: 7px;
       height: 7px;
-      border-radius: 50%;
-      background: #fff;
-      opacity: 0.9;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-meta strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .contact-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 22px;
+      padding: 16px 16px 12px;
+      border: 1px solid var(--border);
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .label-pill {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .contact-link {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    .accent-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      font-size: 11px;
+      color: #bbf7d0;
+      margin-top: 4px;
+    }
+
+    .accent-chip svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Right column: gallery */
+    .gallery-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .gallery-header-title {
+      font-weight: 500;
+    }
+
+    .gallery-header-badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
     }
 
     .gallery {
-      margin-top: 30px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
-    .gallery figure {
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .gallery-main {
       position: relative;
       overflow: hidden;
-      border-radius: 14px;
-      background: #eee;
-      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      border: 1px solid rgba(30, 64, 175, 0.55);
+      background: #020617;
     }
 
-    .gallery img {
+    .gallery-main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transform: scale(1.01);
     }
 
-    .gallery figure:hover img {
-      transform: scale(1.05);
-    }
-
-    .gallery figcaption {
+    .gallery-main-overlay {
       position: absolute;
-      left: 10px;
-      bottom: 10px;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent 48%);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 12px;
     }
 
-    @media (max-width: 600px) {
-      .card {
-        padding: 24px 18px 20px;
-      }
+    .gallery-main-text {
+      font-size: 12px;
+    }
 
-      header h1 {
-        font-size: 22px;
-      }
+    .gallery-main-text span {
+      display: block;
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    .gallery-main-text strong {
+      font-weight: 600;
+    }
+
+    .gallery-main-tag {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .gallery-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: #020617;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item-caption {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      right: 8px;
+      font-size: 10px;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.85), transparent);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--text-muted);
+      backdrop-filter: blur(6px);
+    }
+
+    .gallery-footer {
+      font-size: 10px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .gallery-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.6);
+    }
+
+    .gallery-footer a:hover {
+      color: #e5e7eb;
+      border-bottom-style: solid;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: #64748b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      border-top: 1px solid rgba(31, 41, 55, 0.85);
+      padding-top: 12px;
     }
   </style>
 </head>
 <body>
-  <main class="card">
+  <div class="page">
     <header>
-      <h1>EURL IRITI SUPERMERCATO</h1>
-
-      <div class="info-grid">
-        <div class="info-block">
-          <span class="label">Email</span>
-          <div class="value">sales@invorra.shop</div>
-        </div>
-        <div class="info-block">
-          <span class="label">Téléphone</span>
-          <div class="value">33780884907</div>
-        </div>
-        <div class="info-block">
-          <span class="label">Adresse</span>
-          <div class="value">
-            Boulevard Ampère<br />
-            38230 Tignieu-Jameyzieu<br />
-            FRANCE
-          </div>
-        </div>
-        <div class="info-block">
-          <span class="label">Société</span>
-          <div class="value">Supermarché &amp; épicerie</div>
+      <div class="logo">
+        <div class="logo-mark">I</div>
+        <div>
+          <div class="logo-text-main">Invorra Market</div>
+          <div class="logo-text-sub">EURL IRITI SUPERMERCATO</div>
         </div>
       </div>
 
-      <div class="badge">
+      <div class="domain-pill">
         <span class="dot"></span>
-        <span>Ouvert au public</span>
+        <span>www.invorra-market.fr</span>
       </div>
     </header>
 
-    <!-- Remplace les src ci-dessous par des liens JPG directs (Unsplash, Pexels, etc.) -->
-    <section class="gallery">
-      <figure>
-        <img
-          src="IMAGE_URL_1.jpg"
-          alt="Rayon fruits et légumes dans le supermarché"
-        />
-        <figcaption>Fruits &amp; légumes</figcaption>
-      </figure>
+    <main>
+      <!-- LEFT / HERO -->
+      <section class="hero-card">
+        <div class="hero-badge">
+          <span>🛒 Supermercato de proximité</span>
+          <span>• Tignieu-Jameyzieu, France</span>
+        </div>
 
-      <figure>
-        <img
-          src="IMAGE_URL_2.jpg"
-          alt="Allée de produits et promotions"
-        />
-        <figcaption>Rayons &amp; promos</figcaption>
-      </figure>
+        <h1 class="hero-title">
+          Fraîcheur &amp; choix
+          <span class="hero-highlight">au quotidien</span>
+        </h1>
 
-      <figure>
-        <img
-          src="IMAGE_URL_3.jpg"
-          alt="Client avec panier dans une allée du magasin"
-        />
-        <figcaption>Expérience client</figcaption>
-      </figure>
-    </section>
-  </main>
+        <p class="hero-subtitle">
+          EURL IRITI SUPERMERCATO, votre point de repère pour les produits frais, l&rsquo;épicerie du monde et les
+          essentiels du quotidien à deux pas de chez vous.
+        </p>
+
+        <div class="hero-tags">
+          <div class="hero-tag">Produits frais &amp; surgelés</div>
+          <div class="hero-tag">Épicerie &amp; boissons</div>
+          <div class="hero-tag">Service chaleureux</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn-main" href="tel:+33780884907">
+            📞 Appeler le magasin
+          </a>
+          <a class="btn-ghost" href="mailto:sales@invorra.shop">
+            ✉️ Nous écrire
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span>
+            <i></i>
+            <strong>Tél :</strong> 33780884907
+          </span>
+          <span>
+            <i></i>
+            <strong>Email :</strong> sales@invorra.shop
+          </span>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <span class="label-pill">Adresse</span>
+          </div>
+          <div class="contact-row">
+            <span>Boulevard Ampère</span>
+          </div>
+          <div class="contact-row">
+            <span>38230 Tignieu-Jameyzieu – FRANCE</span>
+          </div>
+
+          <div class="accent-chip">
+            <!-- simple svg icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Ouvert toute la semaine – horaires personnalisables ici.</span>
+          </div>
+
+          <div class="contact-row" style="margin-top: 6px;">
+            <span class="label-pill">Itinéraire</span>
+          </div>
+          <div class="contact-row">
+            <a
+              class="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.google.com/maps/search/?api=1&query=Boulevard+Amp%C3%A8re+Tignieu-Jameyzieu+38230+France"
+            >
+              ➜ Voir sur Google Maps
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT / GALLERY -->
+      <section class="gallery-card">
+        <div class="gallery-header">
+          <div class="gallery-header-title">Aperçu du magasin</div>
+          <div class="gallery-header-badge">3 photos d’ambiance</div>
+        </div>
+
+        <div class="gallery">
+          <!-- main image -->
+          <div class="gallery-main">
+            <img
+              src="https://images.pexels.com/photos/7451936/pexels-photo-7451936.jpeg?cs=srgb&dl=pexels-ian-panelo-7451936.jpg&fm=jpg"
+              alt="Allée centrale lumineuse d'un supermarché."
+              loading="lazy"
+            />
+            <div class="gallery-main-overlay">
+              <div class="gallery-main-text">
+                <span>Intérieur</span>
+                <strong>Allées spacieuses &amp; bien rangées</strong>
+                <div class="gallery-main-tag">Pour des courses confortables à tout moment.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- side images -->
+          <div class="gallery-side">
+            <figure class="gallery-item">
+              <img
+                src="https://images.pexels.com/photos/32411833/pexels-photo-32411833.jpeg?cs=srgb&dl=pexels-mario-tutic-349378571-32411833.jpg&fm=jpg"
+                alt="Devanture de petite épicerie avec fruits et légumes."
+                loading="lazy"
+              />
+              <figcaption class="gallery-item-caption">
+                Fruits &amp; légumes frais prêts à emporter.
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://images.pexels.com/photos/27067921/pexels-photo-27067921.jpeg?cs=srgb&dl=pexels-sebastian-mera-jaramillo-1083009287-27067921.jpg&fm=jpg"
+                alt="Vue depuis un chariot dans un supermarché."
+                loading="lazy"
+              />
+              <figcaption class="gallery-item-caption">
+                Vue client : large choix de produits du quotidien.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="gallery-footer">
+          <span>Images d’illustration libres de droits.</span>
+          <span>
+            <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">
+              Voir plus de photos
+            </a>
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> EURL IRITI SUPERMERCATO – Invorra Market.</span>
+      <span>Site vitrine statique – contenu et horaires à personnaliser.</span>
+    </footer>
+  </div>
+
+  <script>
+    // année dynamique
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
